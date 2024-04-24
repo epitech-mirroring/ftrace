@@ -45,8 +45,6 @@ typedef struct command_s {
 
 typedef struct ftrace_struct_s {
     int status;
-    int pid_flag;
-    int is_detailled;
     pid_t pid;
     command_t given_cmd;
 } ftrace_struct_t;
@@ -60,9 +58,8 @@ int execute_command(ftrace_struct_t *args);
 void print_syscall_info_tree(struct user_regs_struct *regs);
 void print_syscall_info_two(struct user_regs_struct *regs);
 void print_syscall_info(struct user_regs_struct *regs);
-void print_syscall_info_detailled(struct user_regs_struct *regs);
 int ptrace_getregs(ftrace_struct_t *args, struct user_regs_struct *regs);
 int ptrace_singlestep(ftrace_struct_t *args);
 int main_loop(ftrace_struct_t *args);
-int parse_arg(int argc, char **argv, ftrace_struct_t *args);
+void parse_cmd(int argc, char **argv, ftrace_struct_t *args);
 int follow_pid(ftrace_struct_t *args);

@@ -34,10 +34,8 @@ int main_loop(ftrace_struct_t *args)
         status = ptrace_getregs(args, &regs);
         if (status == 1)
             return 1;
-        if ((int)regs.orig_rax >= 0 && args->is_detailled == 0)
+        if ((int)regs.orig_rax >= 0)
             print_syscall_info(&regs);
-        if ((int)regs.orig_rax >= 0 && args->is_detailled == 1)
-            print_syscall_info_detailled(&regs);
         status = ptrace_singlestep(args);
         if (status == 1)
             return 1;

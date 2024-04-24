@@ -7,6 +7,15 @@
 
 #include "ftrace.h"
 
+int attach_ptrace(ftrace_struct_t *args)
+{
+    if (ptrace(PTRACE_ATTACH, args->pid) == -1) {
+        perror("ptrace attach");
+        return 1;
+    }
+    return 0;
+}
+
 int follow_pid(ftrace_struct_t *args)
 {
     int check = attach_ptrace(args);
