@@ -7,7 +7,7 @@
 
 #include "ftrace.h"
 
-void parse_cmd(int argc, char **argv, ftrace_struct_t *args)
+void parse_cmd(char **argv, ftrace_struct_t *args)
 {
     args->given_cmd.cmd = argv[1];
     args->given_cmd.args = &argv[1];

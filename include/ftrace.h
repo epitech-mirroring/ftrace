@@ -61,5 +61,5 @@ void print_syscall_info(struct user_regs_struct *regs);
 int ptrace_getregs(ftrace_struct_t *args, struct user_regs_struct *regs);
 int ptrace_singlestep(ftrace_struct_t *args);
 int main_loop(ftrace_struct_t *args);
-void parse_cmd(int argc, char **argv, ftrace_struct_t *args);
+void parse_cmd(char **argv, ftrace_struct_t *args);
 int follow_pid(ftrace_struct_t *args);

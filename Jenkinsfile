@@ -74,6 +74,12 @@ pipeline {
             }
         }
         stage ('🧪 Tests') {
+          agent {
+                docker {
+                    image 'epitechcontent/epitest-docker:latest'
+                    args '-v /var/run/docker.sock:/var/run/docker.sock'
+                }
+            }
             steps {
                 ansiColor('xterm') {
                     // Run the tests

@@ -14,6 +14,6 @@ int main(int argc, char **argv)
     for (int i = 0; i < argc; i++)
         if (strcmp(argv[i], "-h") == 0 || strcmp(argv[i], "--help") == 0)
             return print_help(0);
-    parse_cmd(argc, argv, &args);
+    parse_cmd(argv, &args);
     return execute_command(&args);
 }
