@@ -6,7 +6,13 @@
 ##
 
 # All the source files
-SOURCES			= 	src/main.c
+SOURCES			= 	src/ftrace.c \
+					src/parse_cmd.c \
+					src/execute_command.c \
+					src/main_loop.c \
+					src/print_help.c \
+					src/print_syscall_info.c \
+					src/follow_pid.c
 
 TESTS			=
 
@@ -95,7 +101,7 @@ $(TESTS_OBJS):	%.o: %.c
 
 tests_run: fclean $(OBJS) $(TESTS_OBJS)
 	@printf "$(RUNNING) $(BLUE) 🔗  Linking$(RESET)"
-	@$(CC) -o tests.out $(filter-out src/main.o, $(OBJS)) \
+	@$(CC) -o tests.out $(filter-out src/ftrace.o, $(OBJS)) \
 	$(TESTS_OBJS) $(FLAGS) -lcriterion >> $(LOG) 2>&1 \
 	&& printf "\r$(SUCCESS)\n" || printf "\r$(FAILURE)\n";
 	@printf "$(RUNNING)$(BLUE)  🧪  Running tests$(RESET)" \

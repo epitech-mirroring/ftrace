@@ -74,13 +74,16 @@ pipeline {
             }
         }
         stage ('🧪 Tests') {
+          agent {
+                docker {
+                    image 'epitechcontent/epitest-docker:latest'
+                    args '-v /var/run/docker.sock:/var/run/docker.sock'
+                }
+            }
             steps {
                 ansiColor('xterm') {
                     // Run the tests
                     sh 'make tests_run'
-
-                    // Update gcovr
-                    sh 'python3 -m pip install -Iv gcovr==6.0'
 
                     // Run gcovr to generate the coverage report
                     sh 'gcovr --cobertura cobertura.xml --exclude tests/'
