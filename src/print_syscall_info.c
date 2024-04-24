@@ -18,6 +18,7 @@ void print_syscall_info(struct user_regs_struct *regs)
     unsigned long long int regs_table[] = {
         regs->rdi, regs->rsi, regs->rdx, regs->r10, regs->r8, regs->r9
     };
+
     printf("%s(", table[regs->orig_rax].name);
     for (int i = 0; i < table[regs->orig_rax].nb_args; i++) {
         if (i != 0)
