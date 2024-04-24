@@ -26,5 +26,4 @@ void print_syscall_info(struct user_regs_struct *regs)
         print_reg(regs_table[i]);
     }
     printf(") = 0x%llx\n", regs->rax);
-    write(0x3, 0x559cfaad2510, 0x40)         = 64
 }
