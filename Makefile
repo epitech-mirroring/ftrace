@@ -6,7 +6,13 @@
 ##
 
 # All the source files
-SOURCES			= 	src/main.c
+SOURCES			= 	src/execute_command.c \
+					src/main_loop.c \
+					src/parse_arg.c \
+					src/print_help.c \
+					src/print_syscall_info.c \
+					src/print_syscall_info_detailled.c \
+					src/follow_pid.c
 
 TESTS			=
 
