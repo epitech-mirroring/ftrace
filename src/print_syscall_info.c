@@ -19,11 +19,11 @@ void print_syscall_info(struct user_regs_struct *regs)
         regs->rdi, regs->rsi, regs->rdx, regs->r10, regs->r8, regs->r9
     };
 
-    printf("%s(", table[regs->orig_rax].name);
+    printf("Syscall %s(", table[regs->orig_rax].name);
     for (int i = 0; i < table[regs->orig_rax].nb_args; i++) {
         if (i != 0)
             printf(", ");
         print_reg(regs_table[i]);
     }
-    printf(")\t = %lld\n", regs->rax);
+    printf(") = 0x%llx\n", regs->rax);
 }
