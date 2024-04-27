@@ -49,8 +49,6 @@ typedef struct ftrace_struct_s {
     command_t given_cmd;
 } ftrace_struct_t;
 
-
-
 int attach_ptrace(ftrace_struct_t *args);
 int main(int argc, char **argv);
 int print_help(int status);
