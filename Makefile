@@ -12,14 +12,16 @@ SOURCES			= 	src/ftrace.c \
 					src/main_loop.c \
 					src/print_help.c \
 					src/print_syscall_info.c \
-					src/follow_pid.c
+					src/follow_pid.c	\
+					src/utils.c \
+					src/map_function_adress.c
 
 TESTS			=
 
 # Compiler and linker settings
 NAME 			= 	ftrace
 CC				= 	gcc
-FLAGS			= 	-W -Wall -Wextra --coverage -I./include
+FLAGS			= 	-W -Wall -Wextra --coverage -I./include -lelf
 OBJS			= 	$(SOURCES:.c=.o)
 TESTS_OBJS		= 	$(TESTS:.c=.o)
 LOG				=	./build.log
@@ -59,7 +61,7 @@ $(NAME):	$(OBJS)
 $(OBJS):	%.o: %.c
 # Compile the source file
 		@printf "$(RUNNING) $(BLUE) 🔨  $$(basename $<)$(RESET)"
-		@$(CC) -o $@ -c $< $(FLAGS) >> $(LOG) 2>&1 \
+		@$(CC) -o $@ -c $< $(FLAGS) \
 		&& printf "\r$(SUCCESS)\n" || printf "\r$(FAILURE)\n"
 
 clean:
